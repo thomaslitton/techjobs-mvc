@@ -52,46 +52,43 @@
         -->
         <h3><span th:text="${searchResults.size()}"/> Result(s)</h3>
         <div>
-            <!-- Moved the `th:each` stuff to the <table>.  That way
-            the <table> element gets repeated instead of the <tr>.
+            <!--
+                All the fields are there and we are displaying the text
+                labels capitalized correctly.
 
-            I also put each field in it's
-            own table row (<tr>), so they display vertically.
+                Note:  There are alternative ways of doing this that others
+                would consider better, like looping over the elements in result
+                instead of handling them individual.  This would be similar to
+                how the `th:each` is used above.  Feel free to give that a try.
+                Just be sure to commit first, so you can revert to a working copy
+                if needed.
             -->
             <table class="job-listing" th:each="result : ${searchResults}">
                 <tr>
-                    <td>position type</td>
+                    <td>Position Type</td>
                     <td th:text="${result.get('position type')}" />
                 </tr>
                 <tr>
-                    <td>name</td>
+                    <td>Name</td>
                     <td th:text="${result.get('name')}" />
                 </tr>
                 <tr>
-                    <td>employer</td>
+                    <td>Employer</td>
                     <td th:text="${result.get('employer')}" />
                 </tr>
 
                 <tr>
-                    <td>location</td>
+                    <td>Location</td>
                     <td th:text="${result.get('location')}" />
                 </tr>
 
                 <tr>
-                    <td>core competency</td>
+                    <td>Core Competency</td>
                     <td th:text="${result.get('core competency')}" />
                 </tr>
-
             </table>
         </div>
     </div>
-
-    <!-- Don't worry about getting this correct.  Just display something
-to make sure we are getting the value here -->
-    <p th:text="${searchResults}"/>
-    <!-- I'm displing the class here so i know what methods are available below -->
-    <p th:text="${searchResults.getClass().toString()}"/>
-
 </div>
 
 </body>
