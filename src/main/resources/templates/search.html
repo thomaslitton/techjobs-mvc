@@ -64,26 +64,14 @@
         -->
         <h3><span th:text="${searchResults.size()}"/> Result(s)</h3>
         <div>
-            <table class="job-listing">
-                <tr>
-                    <td>Position Type</td>
-                    <td>Data Scientist / Business Intelligence</td>
-                </tr>
-                <tr>
-                    <td>Name</td>
-                    <td>Business Intelligence Analyst</td>
-                </tr>
-                <tr>
-                    <td>Employer</td>
-                    <td>Anheuser Busch</td>
-                </tr>
-                <tr>
-                    <td>Location</td>
-                    <td>Saint Louis</td>
-                </tr>
-                <tr>
-                    <td>Core Competency</td>
-                    <td>Database</td>
+            <table class="job-listing" >
+                <!-- I"m starting with something strange here.  Instead
+                of displaying results, i'm re-displaying they same columns
+                as above.  Why?  Because if something goes wrong, i have a
+                working example right above to compare to.
+                -->
+                <tr th:each="column : ${columns}">
+                    <td th:text="${column}" />
                 </tr>
             </table>
         </div>
