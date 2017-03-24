@@ -50,9 +50,36 @@ public class SearchController {
      *
      *  Feel free to experiment by changing the form action in the search.html
      *  page and the value here.  See what works and what doesn't.
+     *
+     *  Request Parameters:
+     *  The @RequestParam means that value is coming from the http request
+     *  as an http parameter.  These are the parameters that get passed from
+     *  the html form in search.html.
+     *
+     *  The names of the arguments (searchType and searchTerm) must match
+     *  the name of the parameters in the html form:
+     * <input
+     * type="radio"
+     * name="searchType"
+     * th:id="${column.key}"
+     * th:value="${column.key}"
+     * th:checked="${column.key == 'all'}"/>
+     *
+     * AND
+     *
+     * <input type="text" name="searchTerm" id="searchTerm" />
      */
     @RequestMapping(value = "results")
-    public String searchResults(Model model) {
+    public String searchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm) {
+
+        // Just make sure we are getting the values without an error.
+        // At first i named these column and value (instead of searchType
+        // and searchTerm).  The result was an error saying there was no parameter
+        // for column.  That's how i knew these names must match the name
+        // of the parameters in the request (You can see them in the URL):
+        // `http://localhost:8080/search/results?searchType=core+competency&searchTerm=java`
+        System.out.println("Type: " + searchType);
+        System.out.println("Term: " + searchTerm);
 
         // This is just a copy of the line above.  How did i know
         // this line was needed?  It was a guess!  Right now these
