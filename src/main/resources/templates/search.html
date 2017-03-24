@@ -58,21 +58,25 @@
         -->
         <h3><span th:text="${searchResults.size()}"/> Result(s)</h3>
         <div>
-            <table class="job-listing" >
-                <tr th:each="result : ${searchResults}">
+            <!-- Moved the `th:each` stuff to the <table>.  That way
+            the <table> element gets repeated instead of the <tr>.
+
+            I also put each element (position type and name) in it's
+            own table row (<tr>), so they display vertically.
+
+            Note:  The display of the class is still making the table
+            look weird.  I'll fix that the next commit.
+            -->
+            <table class="job-listing" th:each="result : ${searchResults}">
+                <tr>
                     <!-- Again display the class of result.  This will inform
                     me of what methods i can use.
                     -->
                     <td th:text="${result.getClass().toString()}"></td>
                     <td>position type</td>
-                    <!-- Since it's a HashMap, i know i can use the get
-                    method.  Since we are in the thyme template, we need
-                    to use the ' instead of " to surround strings.
-                    -->
                     <td th:text="${result.get('position type')}" />
-
-                    <!-- now add the next element
-                    -->
+                </tr>
+                <tr>
                     <td>name</td>
                     <td th:text="${result.get('name')}" />
                 </tr>
