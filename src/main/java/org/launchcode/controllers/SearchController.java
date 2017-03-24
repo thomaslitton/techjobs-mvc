@@ -72,15 +72,6 @@ public class SearchController {
     @RequestMapping(value = "results")
     public String searchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm) {
 
-        // Just make sure we are getting the values without an error.
-        // At first i named these column and value (instead of searchType
-        // and searchTerm).  The result was an error saying there was no parameter
-        // for column.  That's how i knew these names must match the name
-        // of the parameters in the request (You can see them in the URL):
-        // `http://localhost:8080/search/results?searchType=core+competency&searchTerm=java`
-        System.out.println("Type: " + searchType);
-        System.out.println("Term: " + searchTerm);
-
         // This is just a copy of the line above.  How did i know
         // this line was needed?  It was a guess!  Right now these
         // 2 methods do the same thing (display the search.html page),
@@ -107,9 +98,7 @@ public class SearchController {
 
         // Now we get the data.  That method has already been written so
         // we just need to call it.
-        // We will get back to figuring out what to pass in.  Just pass
-        // something that will give us results for now.
-        ArrayList<HashMap<String, String>> searchResults = JobData.findByColumnAndValue("core competency","java");
+        ArrayList<HashMap<String, String>> searchResults = JobData.findByColumnAndValue(searchType,searchTerm);
         // Print it out so we know we are getting results.
         System.out.println("Search results:" + searchResults);
 
