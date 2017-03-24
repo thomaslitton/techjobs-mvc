@@ -56,6 +56,30 @@ public class SearchController {
 
         System.out.println("I'm in search results!!!");
 
+        // This is just a copy of the line above.  How did i know
+        // this line was needed?  It was a guess!  Right now these
+        // 2 methods do the same thing (display the search.html page),
+        // so they should have the same implementation.
+        // If you want a more technical answer:
+        // The thing not displaying is the columns under the line:
+        // `<span th:each="column : ${columns}">`
+        // The ${columns} is connected to the `"columns"` here, so
+        // the value referenced by ${columns} is set here to
+        // `ListController.columnChoices`
+        // Feel free to experiment more here:
+        // * Try to change `"columns"` here and ${columns} in search.html
+        //   to another name "col" and ${col} for example.
+        // * Try changing the value set here to something other then
+        //   `ListController.columnChoices`  try:
+        //    HashMap otherCols = new HashMap();
+        //    otherCols.put("newCol", "other col");
+        //    model.addAttribute("columns", otherCols);
+        // * Try setting other attributes with:
+        //    model.addAttribute("otherAttr", "other attribute");
+        //    AND use it in the template:
+        //    `<p>Some other attribute <span th:text="${otherAttr}" /></p>`
+        model.addAttribute("columns", ListController.columnChoices);
+
         // I'm returning the same thing as above.
         // the value here gets `.html` added to it to
         // find the html page to use.  So `search` becomes
