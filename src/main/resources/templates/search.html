@@ -59,13 +59,22 @@
         <h3><span th:text="${searchResults.size()}"/> Result(s)</h3>
         <div>
             <table class="job-listing" >
-                <!-- I"m starting with something strange here.  Instead
-                of displaying results, i'm re-displaying they same columns
-                as above.  Why?  Because if something goes wrong, i have a
-                working example right above to compare to.
-                -->
                 <tr th:each="result : ${searchResults}">
-                    <td th:text="${result}" />
+                    <!-- Again display the class of result.  This will inform
+                    me of what methods i can use.
+                    -->
+                    <td th:text="${result.getClass().toString()}"></td>
+                    <td>position type</td>
+                    <!-- Since it's a HashMap, i know i can use the get
+                    method.  Since we are in the thyme template, we need
+                    to use the ' instead of " to surround strings.
+                    -->
+                    <td th:text="${result.get('position type')}" />
+
+                    <!-- now add the next element
+                    -->
+                    <td>name</td>
+                    <td th:text="${result.get('name')}" />
                 </tr>
             </table>
         </div>
