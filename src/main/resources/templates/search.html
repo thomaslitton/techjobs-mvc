@@ -38,12 +38,6 @@
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
 
-    <!-- Don't worry about getting this correct.  Just display something
-    to make sure we are getting the value here -->
-    <p th:text="${searchResults}"/>
-    <!-- I'm displing the class here so i know what methods are available below -->
-    <p th:text="${searchResults.getClass().toString()}"/>
-
     <div>
         <!-- Just handle the number of results for now.  The rest of the
         html we can get to later.
@@ -70,12 +64,19 @@
                 as above.  Why?  Because if something goes wrong, i have a
                 working example right above to compare to.
                 -->
-                <tr th:each="column : ${columns}">
-                    <td th:text="${column}" />
+                <tr th:each="result : ${searchResults}">
+                    <td th:text="${result}" />
                 </tr>
             </table>
         </div>
     </div>
+
+    <!-- Don't worry about getting this correct.  Just display something
+to make sure we are getting the value here -->
+    <p th:text="${searchResults}"/>
+    <!-- I'm displing the class here so i know what methods are available below -->
+    <p th:text="${searchResults.getClass().toString()}"/>
+
 </div>
 
 </body>
