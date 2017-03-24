@@ -54,8 +54,6 @@ public class SearchController {
     @RequestMapping(value = "results")
     public String searchResults(Model model) {
 
-        System.out.println("I'm in search results!!!");
-
         // This is just a copy of the line above.  How did i know
         // this line was needed?  It was a guess!  Right now these
         // 2 methods do the same thing (display the search.html page),
@@ -79,6 +77,20 @@ public class SearchController {
         //    AND use it in the template:
         //    `<p>Some other attribute <span th:text="${otherAttr}" /></p>`
         model.addAttribute("columns", ListController.columnChoices);
+
+        // Now we get the data.  That method has already been written so
+        // we just need to call it.
+        // We will get back to figuring out what to pass in.  Just pass
+        // something that will give us results for now.
+        ArrayList<HashMap<String, String>> searchResults = JobData.findByColumnAndValue("core competency","java");
+        // Print it out so we know we are getting results.
+        System.out.println("Search results:" + searchResults);
+
+        // Set it as an attribute, just like the columns above.
+        // This is what we will use in the search.html page.
+        // Just like ${columns} references the columns set above
+        // ${searchResults} will reference the searchResults set here.
+        model.addAttribute("searchResults", searchResults);
 
         // I'm returning the same thing as above.
         // the value here gets `.html` added to it to
