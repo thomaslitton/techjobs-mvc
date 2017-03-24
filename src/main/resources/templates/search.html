@@ -40,14 +40,29 @@
 
     <!-- Don't worry about getting this correct.  Just display something
     to make sure we are getting the value here -->
-    <p th:text="${searchResults}">
+    <p th:text="${searchResults}"/>
+    <!-- I'm displing the class here so i know what methods are available below -->
+    <p th:text="${searchResults.getClass().toString()}"/>
 
-    <!-- Starting with pulling the HTML directly from the demo site
-        right click on the page -> view page source.  Found the html
-        related to job listing and copied it here.
-    -->
     <div>
-        <h3>1 Result(s)</h3>
+        <!-- Just handle the number of results for now.  The rest of the
+        html we can get to later.
+        In this case, we have at attribute searchResults we displayed above.
+        I also displayed the class (ArrayList).  So now we know we can call
+        the size() method on it.
+        -->
+        <!-- Put the number in a separate span html.  There might be a better
+        way of doing this, but this appears to work, and we can always change it
+        later if we come across something better later.
+
+        You can look for a better way of doing it in the docs here:
+        http://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#the-good-thymes-virtual-grocery
+
+        Why span?  Span will allow us to add a value with the th:text="${...}"
+        html attribute without really changing the display (where div for example
+        would put it on the next line).
+        -->
+        <h3><span th:text="${searchResults.size()}"/> Result(s)</h3>
         <div>
             <table class="job-listing">
                 <tr>
@@ -73,9 +88,6 @@
             </table>
         </div>
     </div>
-
-
-    </p>
 </div>
 
 </body>
