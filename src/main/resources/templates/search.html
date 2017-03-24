@@ -55,7 +55,7 @@
             <!-- Moved the `th:each` stuff to the <table>.  That way
             the <table> element gets repeated instead of the <tr>.
 
-            I also put each element (position type and name) in it's
+            I also put each field in it's
             own table row (<tr>), so they display vertically.
             -->
             <table class="job-listing" th:each="result : ${searchResults}">
@@ -67,6 +67,21 @@
                     <td>name</td>
                     <td th:text="${result.get('name')}" />
                 </tr>
+                <tr>
+                    <td>employer</td>
+                    <td th:text="${result.get('employer')}" />
+                </tr>
+
+                <tr>
+                    <td>location</td>
+                    <td th:text="${result.get('location')}" />
+                </tr>
+
+                <tr>
+                    <td>core competency</td>
+                    <td th:text="${result.get('core competency')}" />
+                </tr>
+
             </table>
         </div>
     </div>
