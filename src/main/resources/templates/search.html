@@ -28,19 +28,52 @@
 
         <p>
             <label for="searchTerm">Keyword:</label>
-            <input type="text" name="searchTerm" id="searchTerm" />
+            <input type="text" name="searchTerm" id="searchTerm"/>
         </p>
 
-        <input type="submit" value="Search" />
+        <input type="submit" value="Search"/>
     </form>
 
-    <hr />
+    <hr/>
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
 
     <!-- Don't worry about getting this correct.  Just display something
     to make sure we are getting the value here -->
     <p th:text="${searchResults}">
+
+    <!-- Starting with pulling the HTML directly from the demo site
+        right click on the page -> view page source.  Found the html
+        related to job listing and copied it here.
+    -->
+    <div>
+        <h3>1 Result(s)</h3>
+        <div>
+            <table class="job-listing">
+                <tr>
+                    <td>Position Type</td>
+                    <td>Data Scientist / Business Intelligence</td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>Business Intelligence Analyst</td>
+                </tr>
+                <tr>
+                    <td>Employer</td>
+                    <td>Anheuser Busch</td>
+                </tr>
+                <tr>
+                    <td>Location</td>
+                    <td>Saint Louis</td>
+                </tr>
+                <tr>
+                    <td>Core Competency</td>
+                    <td>Database</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
 
     </p>
 </div>
